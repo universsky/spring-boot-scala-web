@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title th:text="#{app.name}">List of Hotels</title>
+<title th:text="#{app.name}">Scala SpringBoot Gradle</title>
 <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.1.1/css/bootstrap.min.css}" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
 <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.1.1/css/bootstrap-theme.css}" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.css" />
 <link rel="stylesheet" th:href="@{/css/application.css}" href="../../static/css/application.css" />
@@ -16,7 +16,12 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" th:href="@{/hotels}">Hotels Listing</a>
+			<a class="navbar-brand" th:href="@{/hotels}">Scala SpringBoot Gradle</a>
+			<ul class="nav navbar-nav">
+				<li><a href="/hotels">Hotels</a></li>
+				<li><a href="/httpapi">HttpApi</a></li>
+				<li><a href="/testcase">TestCase</a></li>
+			</ul>
 			</div>
 			<div class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-right">
