@@ -11,6 +11,7 @@ import org.springframework.validation.BindingResult
 import org.springframework.web.bind.annotation.{PathVariable, RequestMapping, RequestMethod}
 import mvctest.service.HttpApiRepository
 import mvctest.domain.HttpApi
+import org.springframework.web.bind.annotation.ResponseBody
 
 @Controller
 @RequestMapping(Array("/httpapi"))
@@ -21,6 +22,12 @@ class HttpApiController @Autowired()(private val httpApiRepository: HttpApiRepos
     val apis = httpApiRepository.findAll()
     model.addAttribute("httpApis", apis)
     "httpapi/list"
+  }
+  
+  @RequestMapping(value = Array("listJson"), method = Array(RequestMethod.GET))
+  @ResponseBody
+  def listJson() = {
+    httpApiRepository.findAll()
   }
 
   @RequestMapping(Array("/edit/{id}"))
