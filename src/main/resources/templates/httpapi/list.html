@@ -1,16 +1,22 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" layout:decorator="layout/sitelayout">
+<html xmlns:th="http://www.thymeleaf.org"
+	layout:decorator="layout/sitelayout">
 <head>
 <title th:text="#{app.name}">List of HttpApis</title>
-<link rel="stylesheet" th:href="@{/webjars/bootstrap/3.1.1/css/bootstrap.min.css}" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
-<link rel="stylesheet" th:href="@{/webjars/bootstrap/3.1.1/css/bootstrap-theme.css}" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.css" />
-<link rel="stylesheet" th:href="@{/css/application.css}" href="../../static/css/application.css" />
+<link rel="stylesheet"
+	th:href="@{/webjars/bootstrap/3.1.1/css/bootstrap.min.css}"
+	href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+<link rel="stylesheet"
+	th:href="@{/webjars/bootstrap/3.1.1/css/bootstrap-theme.css}"
+	href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.css" />
+<link rel="stylesheet" th:href="@{/css/application.css}"
+	href="../../static/css/application.css" />
 </head>
 <body>
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12">
-				<h1 class="well well-small">HttpApis</h1>
+				<h1 class="well well-small">HttpApi</h1>
 			</div>
 		</div>
 		<div layout:fragment="content">
@@ -21,6 +27,8 @@
 							<tr>
 								<th>ID</th>
 								<th>Name</th>
+								<th>Product</th>
+								<th>Module</th>
 								<th>Host</th>
 								<th>Uri</th>
 								<th>paramsType</th>
@@ -37,13 +45,15 @@
 							<tr th:each="api : ${httpApis}">
 								<td th:text="${api.id}">1</td>
 								<td th:text="${api.name}">Name</td>
+								<td th:text="${api.product}">Product</td>
+								<td th:text="${api.module}">Module</td>
 								<td th:text="${api.host}">Host</td>
 								<td th:text="${api.uri}">Uri</td>
 								<td th:text="${api.paramsType}">paramsType</td>
 								<td th:text="${api.paramsContent}">paramsContent</td>
 								<td th:text="${api.expectOutput}">expectOutput</td>
 								<td th:text="${api.actualOutput}">actualOutput</td>
-								
+
 								<td><a th:href="@{/httpapi/edit/__${api.id}__}" href="#">Edit</a>
 									| <a th:href="@{/httpapi/delete/__${api.id}__}" href="#">Delete</a>
 								</td>
@@ -54,7 +64,8 @@
 			</div>
 			<div class="row">
 				<div class="col-xs-12">
-					<a href="#" th:href="@{/httpapi?form=true}" class="btn btn-default">New Api</a>
+					<a href="#" th:href="@{/httpapi?form=true}" class="btn btn-default">New
+						Api</a>
 				</div>
 			</div>
 		</div>

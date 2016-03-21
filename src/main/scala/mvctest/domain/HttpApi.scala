@@ -17,6 +17,14 @@ class HttpApi {
 
   @BeanProperty
   @NotEmpty
+  var product: String = _
+
+  @BeanProperty
+  @NotEmpty
+  var module: String = _
+
+  @BeanProperty
+  @NotEmpty
   var name: String = _
 
   @BeanProperty
@@ -26,20 +34,20 @@ class HttpApi {
   @BeanProperty
   @NotEmpty
   var host: String = _
-  
+
   @BeanProperty
   @NotEmpty
   var paramsType: String = _ // 'json'  'header'  'form'  'body'
-  
+
   @BeanProperty
-  var paramsContent:String = _ // json string
-  
+  var paramsContent: String = _ // json string
+
   @BeanProperty
-  var expectOutput:String = _
-  
+  var expectOutput: String = _
+
   @BeanProperty
-  var actualOutput:String =_
-  
+  var actualOutput: String = _
+
   @BeanProperty
-  var result:String = _ // Pass Fail Not_Implemented
+  var result: String = _ // Pass Fail Not_Implemented
 }

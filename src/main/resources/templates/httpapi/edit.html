@@ -1,10 +1,17 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" layout:decorator="layout/sitelayout">
+<html xmlns:th="http://www.thymeleaf.org"
+	layout:decorator="layout/sitelayout">
 <head>
+<meta charset="utf-8"/>
 <title th:text="#{app.name}">Edit HttpApis</title>
-<link rel="stylesheet" th:href="@{/webjars/bootstrap/3.1.1/css/bootstrap.min.css}" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
-<link rel="stylesheet" th:href="@{/webjars/bootstrap/3.1.1/css/bootstrap-theme.css}" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.css" />
-<link rel="stylesheet" th:href="@{/css/application.css}" href="../../static/css/application.css" />
+<link rel="stylesheet"
+	th:href="@{/webjars/bootstrap/3.1.1/css/bootstrap.min.css}"
+	href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+<link rel="stylesheet"
+	th:href="@{/webjars/bootstrap/3.1.1/css/bootstrap-theme.css}"
+	href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.css" />
+<link rel="stylesheet" th:href="@{/css/application.css}"
+	href="../../static/css/application.css" />
 </head>
 <body>
 	<div class="container-fluid">
@@ -13,39 +20,109 @@
 				<h1 class="well well-small">HttpApis</h1>
 			</div>
 		</div>
-		<div layout:fragment="content">		
+		<div layout:fragment="content">
 			<div class="row">
 				<div class="col-xs-12">
-					<form action="#" th:action="@{/hotels/update}" method="post" th:object="${hotel}" class="form-horizontal">
-						<input type="hidden" th:field="*{id}"/>
+					<form action="#" th:action="@{/httpapi/update}" method="post"
+						th:object="${httpApi}" class="form-horizontal">
 						<div class="form-group">
 							<label for="name" class="col-xs-2">Name</label>
 							<div class="col-xs-6">
-								<input class="form-control" placeholder="Name" th:field="*{name}"/>
+								<input class="form-control" placeholder="Name"
+									th:field="*{name}" />
 							</div>
 							<div class="col-xs-4">
-								<p class="text-warning" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Error with Name</p>
-							</div>						
+								<p class="text-warning" th:if="${#fields.hasErrors('name')}"
+									th:errors="*{name}">Error with Name</p>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="product" class="col-xs-2">Product</label>
+							<div class="col-xs-6">
+								<input class="form-control" placeholder="Product"
+									th:field="*{product}" />
+							</div>
+							<div class="col-xs-4">
+								<p class="text-warning" th:if="${#fields.hasErrors('product')}"
+									th:errors="*{product}">Error with Product</p>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="module" class="col-xs-2">Module</label>
+							<div class="col-xs-6">
+								<input class="form-control" placeholder="Module"
+									th:field="*{module}" />
+							</div>
+							<div class="col-xs-4">
+								<p class="text-warning" th:if="${#fields.hasErrors('module')}"
+									th:errors="*{module}">Error with Module</p>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="Host" class="col-xs-2">Host</label>
+							<div class="col-xs-6">
+								<input class="form-control" placeholder="Host"
+									th:field="*{host}" />
+							</div>
+							<div class="col-xs-4">
+								<p class="text-warning" th:if="${#fields.hasErrors('host')}"
+									th:errors="*{host}">Error with Host</p>
+							</div>
 						</div>
 						<div class="form-group">
-							<label for="address" class="col-xs-2">Address</label>
+							<label for="Uri" class="col-xs-2">Uri</label>
 							<div class="col-xs-6">
-								<input class="form-control" placeholder="Address" th:field="*{address}"/>
+								<input class="form-control" placeholder="Uri" th:field="*{uri}" />
 							</div>
 							<div class="col-xs-4">
-								<p class="text-warning" th:if="${#fields.hasErrors('address')}" th:errors="*{address}">Error with Address</p>
-							</div>						
-						</div>		
+								<p class="text-warning" th:if="${#fields.hasErrors('uri')}"
+									th:errors="*{uri}">Error with Uri</p>
+							</div>
+						</div>
+
 						<div class="form-group">
-							<label for="zip" class="col-xs-2">Zip</label>
+							<label for="paramsType" class="col-xs-2">paramsType</label>
 							<div class="col-xs-6">
-								<input class="form-control" placeholder="Zip" th:field="*{zip}"/>
+								<input class="form-control" placeholder="paramsType"
+									th:field="*{paramsType}" />
 							</div>
 							<div class="col-xs-4">
-								<p class="text-warning" th:if="${#fields.hasErrors('zip')}" th:errors="*{zip}">Error with Zip</p>
-							</div>						
-						</div>	
-						<button type="submit" class="btn btn-default">Submit</button>							
+								<p class="text-warning"
+									th:if="${#fields.hasErrors('paramsType')}"
+									th:errors="*{paramsType}">Error with paramsType</p>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="paramsContent" class="col-xs-2">paramsContent</label>
+							<div class="col-xs-6">
+								<input class="form-control" placeholder="paramsContent"
+									th:field="*{paramsContent}" />
+							</div>
+							<div class="col-xs-4">
+								<p class="text-warning"
+									th:if="${#fields.hasErrors('paramsContent')}"
+									th:errors="*{paramsContent}">Error with paramsContent</p>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="expectOutput" class="col-xs-2">expectOutput</label>
+							<div class="col-xs-6">
+								<input class="form-control" placeholder="expectOutput"
+									th:field="*{expectOutput}" />
+							</div>
+							<div class="col-xs-4">
+								<p class="text-warning"
+									th:if="${#fields.hasErrors('expectOutput')}"
+									th:errors="*{expectOutput}">Error with expectOutput</p>
+							</div>
+						</div>
+
+						<button type="submit" class="btn btn-default">Submit</button>
 					</form>
 				</div>
 			</div>

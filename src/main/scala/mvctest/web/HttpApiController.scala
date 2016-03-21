@@ -35,7 +35,7 @@ class HttpApiController @Autowired()(private val httpApiRepository: HttpApiRepos
     "httpapi/create"
   }
 
-  @RequestMapping(method = Array(RequestMethod.POST))
+  @RequestMapping(value = Array("/new"),method = Array(RequestMethod.POST))
   def create(@Valid httpApi: HttpApi, bindingResult: BindingResult) = {
     if (bindingResult.hasErrors()) {
       "httpapi/create"

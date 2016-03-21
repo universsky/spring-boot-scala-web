@@ -1,9 +1,14 @@
 package mvctest.service
 
-import org.springframework.data.repository.CrudRepository
-
-import javax.persistence.Entity
-import mvctest.domain.HttpApi
 import java.lang.Long
 
-trait HttpApiRepository extends CrudRepository[HttpApi, Long]
+import org.springframework.data.jpa.repository.Query
+import org.springframework.data.repository.PagingAndSortingRepository
+
+import javax.persistence.Persistence
+import mvctest.domain.HttpApi
+
+trait HttpApiRepository extends PagingAndSortingRepository[HttpApi, Long] {
+  @Query(value = "SELECT distinct product FROM hotel.http_api limit 1", nativeQuery = true)
+  def findProducts(): String
+}
