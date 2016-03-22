@@ -33,8 +33,8 @@
 							<tr th:if="${products.empty}">
 								<td colspan="5">No messages</td>
 							</tr>
-							<tr th:each="product : ${products}">
-								<td th:text="">1</td>
+							<tr th:each="product,protoType : ${products}">
+								<td th:text="${protoType.index} + 1">1</td>
 								<td th:text="${product}">1</td>
 							</tr>
 						</tbody>
