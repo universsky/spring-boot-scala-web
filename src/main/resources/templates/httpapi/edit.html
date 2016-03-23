@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	layout:decorator="layout/sitelayout">
 <head>
-<meta charset="utf-8"/>
+<meta charset="utf-8" />
 <title th:text="#{app.name}">Edit HttpApis</title>
 <link rel="stylesheet"
 	th:href="@{/webjars/bootstrap/3.1.1/css/bootstrap.min.css}"
@@ -24,7 +24,9 @@
 			<div class="row">
 				<div class="col-xs-12">
 					<form action="#" th:action="@{/httpapi/update}" method="post"
-						th:object="${httpApi}" class="form-horizontal">
+						accept-charset="utf-8" th:object="${httpApi}"
+						class="form-horizontal">
+						<input type="hidden" th:field="*{id}" />
 						<div class="form-group">
 							<label for="name" class="col-xs-2">Name</label>
 							<div class="col-xs-6">

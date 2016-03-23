@@ -1,10 +1,10 @@
-package mvctest.web
+package resti.web
 
 import java.lang.Long
 import javax.validation.Valid
 
-import mvctest.domain.Hotel
-import mvctest.service.HotelRepository
+import resti.domain.Hotel
+import resti.service.HotelRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model

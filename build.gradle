@@ -39,9 +39,15 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-actuator")
     compile("org.springframework.boot:spring-boot-gradle-plugin:1.2.7.RELEASE")
     compile('org.springframework:springloaded:1.2.4.RELEASE')
+    compile('org.springframework.boot:spring-boot-starter-thymeleaf:1.3.3.RELEASE')
+    compile('org.thymeleaf.extras:thymeleaf-extras-springsecurity3:3.0.0.BETA02')
+    
+    compile('org.springframework.security:spring-security-config:4.0.4.RELEASE')
+    compile('org.springframework.security:spring-security-core:4.0.4.RELEASE')
+    compile('org.springframework.security:spring-security-web:4.0.4.RELEASE')
     
     compile("org.thymeleaf:thymeleaf-spring4")
-    compile("nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect")
+    compile("nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:1.3.3")
     compile("org.hibernate:hibernate-validator")
     testCompile("org.springframework.boot:spring-boot-starter-test")
     compile("org.hsqldb:hsqldb")

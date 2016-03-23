@@ -1,21 +1,21 @@
-package mvctest.web
+package resti.web
 
 import java.lang.Long
 import javax.validation.Valid
-import mvctest.domain.Hotel
-import mvctest.service.HotelRepository
+import resti.domain.Hotel
+import resti.service.HotelRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.validation.BindingResult
-import org.springframework.web.bind.annotation.{PathVariable, RequestMapping, RequestMethod}
-import mvctest.service.HttpApiRepository
-import mvctest.domain.HttpApi
+import org.springframework.web.bind.annotation.{ PathVariable, RequestMapping, RequestMethod }
+import resti.service.HttpApiRepository
+import resti.domain.HttpApi
 import org.springframework.web.bind.annotation.ResponseBody
 
 @Controller
 @RequestMapping(Array("/httpapi"))
-class HttpApiController @Autowired()(private val httpApiRepository: HttpApiRepository) {
+class HttpApiController @Autowired() (private val httpApiRepository: HttpApiRepository) {
 
   @RequestMapping(method = Array(RequestMethod.GET))
   def list(model: Model) = {
@@ -23,7 +23,7 @@ class HttpApiController @Autowired()(private val httpApiRepository: HttpApiRepos
     model.addAttribute("httpApis", apis)
     "httpapi/list"
   }
-  
+
   @RequestMapping(value = Array("listJson"), method = Array(RequestMethod.GET))
   @ResponseBody
   def listJson() = {
@@ -42,7 +42,7 @@ class HttpApiController @Autowired()(private val httpApiRepository: HttpApiRepos
     "httpapi/create"
   }
 
-  @RequestMapping(value = Array("/new"),method = Array(RequestMethod.POST))
+  @RequestMapping(value = Array("/new"), method = Array(RequestMethod.POST))
   def create(@Valid httpApi: HttpApi, bindingResult: BindingResult) = {
     if (bindingResult.hasErrors()) {
       "httpapi/create"
@@ -57,6 +57,7 @@ class HttpApiController @Autowired()(private val httpApiRepository: HttpApiRepos
     if (bindingResult.hasErrors()) {
       "httpapi/edit"
     } else {
+      println("[httpApi]====" + httpApi.product)
       httpApiRepository.save(httpApi)
       "redirect:/httpapi"
     }
