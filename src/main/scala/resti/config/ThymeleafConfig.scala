@@ -1,52 +1,41 @@
 package resti.config
 
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.context.MessageSource
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.web.servlet.ViewResolver
-import org.thymeleaf.extras.springsecurity3.dialect.SpringSecurityDialect
+import org.springframework.context.annotation.Description
 import org.thymeleaf.spring4.SpringTemplateEngine
 import org.thymeleaf.spring4.view.ThymeleafViewResolver
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver
-import org.thymeleaf.templateresolver.TemplateResolver
 
-@Configuration
-class ThymeleafConfig @Autowired() (private val messageSource: MessageSource,
-    private val springSecurityDialect: SpringSecurityDialect) {
+import com.typesafe.scalalogging.slf4j.LazyLogging
+
+//@Configuration
+class ThymeleafConfig extends LazyLogging {
 
   @Bean
-  def templateResolver(): TemplateResolver = {
-    val templateResolver = new ServletContextTemplateResolver()
-    templateResolver.setPrefix("/WEB-INF/views/")
+  @Description("Template resolver serving HTML 5 emails")
+  def templateResolver = {
+    val templateResolver = new ServletContextTemplateResolver
+    templateResolver.setPrefix("classpath:/templates/")
     templateResolver.setSuffix(".html")
     templateResolver.setTemplateMode("HTML5")
     templateResolver.setCharacterEncoding("UTF-8")
     templateResolver.setCacheable(false)
+    templateResolver.setOrder(1)
     templateResolver
+
   }
 
   @Bean
-  def templateEngine(): SpringTemplateEngine = {
-    val templateEngine = new SpringTemplateEngine()
-    templateEngine.setTemplateResolver(templateResolver())
-    templateEngine.setMessageSource(messageSource)
-    templateEngine.addDialect(springSecurityDialect)
-    templateEngine
-  }
+  @Description("ThymeleafViewResolver")
+  def thymeleafViewResolver = {
+    val thymeleafViewResolver = new ThymeleafViewResolver
+    thymeleafViewResolver.setCharacterEncoding("UTF-8")
+    thymeleafViewResolver.setContentType("text/html")
+    thymeleafViewResolver.setOrder(2)
+    thymeleafViewResolver.setTemplateEngine(new SpringTemplateEngine)
+    thymeleafViewResolver
 
-  @Bean
-  def viewResolver(): ViewResolver = {
-    val viewResolver = new ThymeleafViewResolver()
-    viewResolver.setTemplateEngine(templateEngine())
-    viewResolver.setOrder(1)
-    viewResolver.setCharacterEncoding("UTF-8")
-    viewResolver
-  }
-
-  @Bean
-  def securityDialect(): SpringSecurityDialect = {
-    new SpringSecurityDialect()
   }
 
 }
