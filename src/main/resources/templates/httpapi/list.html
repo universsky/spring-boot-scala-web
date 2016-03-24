@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-	layout:decorator="layout/sitelayout">
+	layout:decorator="layout/nav">
 <head>
 <meta charset="utf-8" />
 <title th:text="#{app.name}">List of HttpApis</title>
@@ -55,8 +55,8 @@
 								<td th:text="${api.expectOutput}">expectOutput</td>
 								<td th:text="${api.actualOutput}">actualOutput</td>
 
-								<td><a th:href="@{/httpapi/edit/__${api.id}__}" href="#">Edit</a>
-									| <a th:href="@{/httpapi/delete/__${api.id}__}" href="#">Delete</a>
+								<td><a th:href="@{/httpapi/edit/__${api.id}__}" href="#">编辑</a>
+									| <a th:href="@{/httpapi/delete/__${api.id}__}" href="#">删除</a>
 								</td>
 							</tr>
 						</tbody>
@@ -65,8 +65,7 @@
 			</div>
 			<div class="row">
 				<div class="col-xs-12">
-					<a href="#" th:href="@{/httpapi?form=true}" class="btn btn-default">New
-						Api</a>
+					<a href="#" th:href="@{/httpapi?form=true}" class="btn btn-default">新建接口</a>
 				</div>
 			</div>
 		</div>

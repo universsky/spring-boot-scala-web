@@ -2,8 +2,6 @@ package resti.web
 
 import java.lang.Long
 import javax.validation.Valid
-import resti.domain.Hotel
-import resti.service.HotelRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
@@ -12,6 +10,7 @@ import org.springframework.web.bind.annotation.{ PathVariable, RequestMapping, R
 import resti.service.HttpApiRepository
 import resti.domain.HttpApi
 import org.springframework.web.bind.annotation.ResponseBody
+import org.springframework.security.access.prepost.PreAuthorize
 
 @Controller
 @RequestMapping(Array("/httpapi"))
@@ -31,6 +30,7 @@ class HttpApiController @Autowired() (private val httpApiRepository: HttpApiRepo
   }
 
   @RequestMapping(Array("/edit/{id}"))
+  @PreAuthorize("hasRole('ROLE_ADMIN')")
   def edit(@PathVariable("id") id: Long, model: Model) = {
     model.addAttribute("httpApi", httpApiRepository.findOne(id))
     "httpapi/edit"
@@ -43,6 +43,7 @@ class HttpApiController @Autowired() (private val httpApiRepository: HttpApiRepo
   }
 
   @RequestMapping(value = Array("/new"), method = Array(RequestMethod.POST))
+  @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
   def create(@Valid httpApi: HttpApi, bindingResult: BindingResult) = {
     if (bindingResult.hasErrors()) {
       "httpapi/create"
@@ -53,6 +54,7 @@ class HttpApiController @Autowired() (private val httpApiRepository: HttpApiRepo
   }
 
   @RequestMapping(value = Array("/update"), method = Array(RequestMethod.POST))
+  @PreAuthorize("hasRole('ROLE_ADMIN')")
   def update(@Valid httpApi: HttpApi, bindingResult: BindingResult) = {
     if (bindingResult.hasErrors()) {
       "httpapi/edit"
@@ -64,6 +66,7 @@ class HttpApiController @Autowired() (private val httpApiRepository: HttpApiRepo
   }
 
   @RequestMapping(value = Array("/delete/{id}"))
+  @PreAuthorize("hasRole('ROLE_ADMIN')")
   def delete(@PathVariable("id") id: Long) = {
     httpApiRepository.delete(id)
     "redirect:/httpapi"
