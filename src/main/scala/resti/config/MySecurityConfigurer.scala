@@ -8,8 +8,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.context.annotation.Bean
 
-@EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+@EnableWebSecurity // @EnableGlobalMethodSecurity(prePostEnabled = true) // this annotation at here do not take effects, it should add on the Application
 class MySecurityConfigurer extends WebSecurityConfigurerAdapter {
   override def configure(builder: AuthenticationManagerBuilder): Unit = {
     builder.inMemoryAuthentication()
